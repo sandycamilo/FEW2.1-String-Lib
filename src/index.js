@@ -117,6 +117,23 @@ console.log(snakeCase('    Hello World!!!!  a-hypenated-word  1, 2, 3, 5 and 77 
 // other words, and removes all spaces
 // *******************************************************************************************************************
 
+function camelCase(str) {
+  // split on the space ' ' to get an array of words
+  const words = str.split(' ')
+  // loop over the words 
+  const camelWords = words.map((word, i) => {
+      // lowercase the first word 
+      if (i === 0) {
+        return word.toLowerCase()
+      }
+      // uppercase the others 
+      return capitalize(word)
+  })
+  // join the words on the ' ' empty string    
+  return camelWords.join('')
+}
+
+console.log(camelCase('Hello there how are you'))
 
 // *******************************************************************************************************************
 // Challenge 8 - shift() 
