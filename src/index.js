@@ -140,12 +140,20 @@ console.log(camelCase('Hello there how are you'))
 // This method will take the first character of a string and move to the end of a string.
 // *******************************************************************************************************************
 
+function shift(str) {
+  const firstLetter = str[0]
+  const newWord = str.slice(1)
+  return newWord + firstLetter
+}
+
+console.log(shift('Hello World'))
 
 // *******************************************************************************************************************
 // Challenge 9 - makeHashTag(str)
 // This function should convert the given string to a hash tag. A hash tag begins with # and no spaces. 
 // Each word in the phrase begins with an uppercase letter.
 // *******************************************************************************************************************
+
 
 
 // *******************************************************************************************************************
