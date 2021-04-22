@@ -176,15 +176,11 @@ console.log(makeHashTag('Amazing bongo drums for sale'))
 // Returns true if the given string is empty or contains only whitespace.
 // *******************************************************************************************************************
 
-// function isEmpty(str) {
-//   if (code > 96 && code < 123) { 
-//     return true
-//   } else if (code > 47 && code < 58) { 
-//     return true
-//   } else if (code === 32 || code === separator.charCodeAt(0)) { // keep space and hyphen
-//     return true
-//   }
-//   return false
-// })
+function isEmpty(str) {
+  const split = str.split(' ')
+  const filtered = split.filter(word => word === '')
+  return split.length === filtered.length ? true : false
+}
 
-// }
+console.log(isEmpty('Abd def'))
+console.log(isEmpty(' '))
