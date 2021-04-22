@@ -154,9 +154,37 @@ console.log(shift('Hello World'))
 // Each word in the phrase begins with an uppercase letter.
 // *******************************************************************************************************************
 
+function makeHashTag(str) {
+  // split string
+  const words = str.split(' ')
+  // check length 
+  if (words.length >= 3) {
+    // sort length
+    words.sort((a,b) => {
+      b.length - a.length
+    })
+  }
+  // lowercase each and add # at beginning
+  const hashtag = words.map(word => `#${word.toLowerCase()}`)
+  return hashtag
+}
 
+console.log(makeHashTag('Amazing bongo drums for sale'))
 
 // *******************************************************************************************************************
 // Challenge 10 - isEmpty(str)
 // Returns true if the given string is empty or contains only whitespace.
 // *******************************************************************************************************************
+
+// function isEmpty(str) {
+//   if (code > 96 && code < 123) { 
+//     return true
+//   } else if (code > 47 && code < 58) { 
+//     return true
+//   } else if (code === 32 || code === separator.charCodeAt(0)) { // keep space and hyphen
+//     return true
+//   }
+//   return false
+// })
+
+// }
