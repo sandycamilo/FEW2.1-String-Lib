@@ -75,7 +75,7 @@ console.log(removeExtraSpaces('   hello     world   '))
 // Removes extra spaces and replaces spaces with the hyphen "-", and makes all characters lowercase.
 // *******************************************************************************************************************
 
-function kebobCase(str) {
+function kebobCase(str, separator = '-') {
   // lowercase
   const lowerCase = str.toLowerCase()
   // split 
@@ -87,7 +87,7 @@ function kebobCase(str) {
       return true
     } else if (code > 47 && code < 58) { // keep numbers
       return true
-    } else if (code === 32 || code === 45) { // keep space and hyphen
+    } else if (code === 32 || code === separator.charCodeAt(0)) { // keep space and hyphen
       return true
     }
     return false
@@ -95,7 +95,7 @@ function kebobCase(str) {
   // remove extra spaces 
   const spaceFree = removeExtraSpaces(filtered.join(''))
   // split, join and return 
-  return spaceFree.split(' ').join('-')
+  return spaceFree.split(' ').join(separator)
 }
 
 console.log(kebobCase('    Hello World!!!!  a-hypenated-word  1, 2, 3, 5 and 77   '))
@@ -105,6 +105,11 @@ console.log(kebobCase('    Hello World!!!!  a-hypenated-word  1, 2, 3, 5 and 77 
 // Removes extra space and replaces spaces with an underscore "_", and makes all characters lowercase.
 // *******************************************************************************************************************
 
+function snakeCase(str) {
+  return kebobCase(str, '_')
+}
+
+console.log(snakeCase('    Hello World!!!!  a-hypenated-word  1, 2, 3, 5 and 77   '))
 
 // *******************************************************************************************************************
 // Challenge 7 - camelCase() 
