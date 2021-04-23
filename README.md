@@ -1,17 +1,17 @@
 # String - Lib 
 
-A JS Library for strings.
+### A JS Library for strings.
 
 
 
-
-
-![npm](https://img.shields.io/npm/v/@sandycamilo/stringlib)
+![npm](https://img.shields.io/npm/v/    @sandycamilo/stringlib)
 
 ![npm collaborators](https://img.shields.io/npm/collaborators/@sandycamilo/stringlib)
 
 
 
+
+### String prototype extension:
 
 ```
 1. .capitalize()
