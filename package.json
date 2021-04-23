@@ -1,6 +1,6 @@
 {
   "name": "@sandycamilo/stringlib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A JS library for strings",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,9 @@
   },
   "author": "Sandy Camilo",
   "license": "ISC",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "keywords": [],
   "repository": {
     "type": "git",
