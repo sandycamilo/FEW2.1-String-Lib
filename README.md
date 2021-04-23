@@ -6,8 +6,9 @@ A JS Library for strings.
 
 
 
-![npm bundle size](https://img.shields.io/bundlephobia/min/@sandycamilo/stringlib?style=for-the-badge)
+![npm](https://img.shields.io/npm/v/@sandycamilo/stringlib)
 
+![npm collaborators](https://img.shields.io/npm/collaborators/@sandycamilo/stringlib)
 
 
 
