@@ -8,5 +8,13 @@
   },
   "author": "Sandy Camilo",
   "license": "ISC",
-  "keywords": []
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandycamilo/FEW2.1-String-Lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sandycamilo/FEW2.1-String-Lib/issues"
+  },
+  "homepage": "https://github.com/sandycamilo/FEW2.1-String-Lib#readme"
 }
