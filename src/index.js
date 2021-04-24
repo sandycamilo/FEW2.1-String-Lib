@@ -195,3 +195,14 @@ const word_nine = 'Abd def'
 const word_ten = ' '
 console.log(word_nine.isEmpty())
 console.log(word_ten.isEmpty())
+
+module.exports.capitalize = capitalize
+module.exports.allUpperCase = allUpperCase
+module.exports.capitalizeWords = capitalizeWords
+module.exports.removeExtraSpaces = removeExtraSpaces
+module.exports.kebobCase = kebobCase
+module.exports.snakeCase = snakeCase
+module.exports.camelCase = camelCase
+module.exports.shift = shift
+module.exports.makeHashTag = makeHashTag
+module.exports.isEmpty = isEmpty
