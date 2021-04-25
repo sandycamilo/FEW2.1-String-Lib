@@ -1,62 +1,55 @@
-
-// run script test 
-// console.log('Hello World')
-// const str = "hello world"
-// console.log(str[0])
-// console.log(str.length)
-// console.log(str.toUpperCase())
-
-
 // *******************************************************************************************************************
 // #1 - capitalize() 
 // Makes the first character of a given string uppercase. 
 // *******************************************************************************************************************
 
-// first version 
-String.prototype.capitalize = function() {
-  const firstLetter = this[0].toUpperCase()
-  const restOfLetters = this.slice(1)
-  const newWord = firstLetter + restOfLetters
-  return newWord
+function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1)
 }
 
-const str = 'hello world'
-console.log(str.capitalize())
+String.prototype.capitalize = function() {
+  return capitalize(this)
+}
 
-// second version 
-// function capitilize(str) {
-//   const arr = str.split('')
-//   arr[0] = arr[0].toUpperCase()
-//   return arr.join('')
-// }
-
-// console.log(capitalize('strawberry'))
+console.log(capitalize('hi there')) // Hi there
+const word_one = 'hello world'
+console.log(word_one.capitalize()) // Hello world
 
 // *******************************************************************************************************************
 // #2 - allCaps() 
 // Makes all characters uppercase. 
 // *******************************************************************************************************************
 
+function allUpperCase(str) {
+  return str.toUpperCase()
+}
+
 String.prototype.allUpperCase = function() {
   return this.toUpperCase()
 }
 
-const word = 'orange'
-console.log(word.allUpperCase())
+console.log(allUpperCase('banana')) // BANANA
+const word_two = 'orange'
+console.log(word_two.allUpperCase()) // ORANGE
 
 // *******************************************************************************************************************
 // #3 - capitalizeWords() 
 // Makes the first character of each word uppercase. Imagine that each word is separated by a space.
 // *******************************************************************************************************************
 
-String.prototype.capitalizeWords = function() {
-  const words = this.split(' ')
+function capitalizeWords(str) {
+  const words = str.split(' ')
   const upperWords = words.map( word => word.capitalize() )
-  return upperWords.join(' ')
+  return upperWords.join(' ') 
 }
 
-const word_two = 'the sky is blue'
-console.log(word_two.capitalizeWords())
+String.prototype.capitalizeWords = function() {
+  return capitalizeWords(this)
+}
+
+console.log(capitalizeWords('the sky is red')) // The Sky Is Red
+const word_three = 'the sky is blue'
+console.log(word_three.capitalizeWords()) // The Sky Is Blue 
 
 // *******************************************************************************************************************
 // #4 - removeExtraSpaces() 
@@ -64,58 +57,72 @@ console.log(word_two.capitalizeWords())
 // If more than one space appears in the middle of a string it is replaced by a single space.
 // *******************************************************************************************************************
 
-String.prototype.removeExtraSpaces = function() {
-  const trimString = this.trim()
+function removeExtraSpaces(str) {
+  const trimString = str.trim()
   const takeSpaces = trimString.split(' ')
   const filtered = takeSpaces.filter( (c) => c !== '')
   return filtered.join(' ')
 }
+String.prototype.removeExtraSpaces = function() {
+  return removeExtraSpaces(this)
+}
 
-const word_three = '   hello     world   '
-console.log(word_three.removeExtraSpaces())
+console.log(removeExtraSpaces('hey    there!!!        ')) // hey there!!!
+const word_four = '   hello     world   '
+console.log(word_four.removeExtraSpaces()) // hello world
 
 // *******************************************************************************************************************
 // #5 - kebobCase() 
 // Removes extra spaces and replaces spaces with the hyphen "-", and makes all characters lowercase.
 // *******************************************************************************************************************
 
-String.prototype.kebobCase = function(separator = '-') {
-  // lowercase
-  const lowerCase = this.toLowerCase()
-  // split 
-  const array = lowerCase.split('')
-  // filter 
-  const filtered = array.filter( (c) => {
-    const code = c.charCodeAt(0)
-    if (code > 96 && code < 123) { // keep letters
-      return true
-    } else if (code > 47 && code < 58) { // keep numbers
-      return true
-    } else if (code === 32 || code === separator.charCodeAt(0)) { // keep space and hyphen
-      return true
-    }
-    return false
-  })
-  // remove extra spaces 
-  const spaceFree = filtered.join('').removeExtraSpaces()
-  // split, join and return 
-  return spaceFree.split(' ').join(separator)
+function kebobCase(str, separator = '-') {
+    // lowercase
+    const lowerCase = str.toLowerCase()
+    // split 
+    const array = lowerCase.split('')
+    // filter 
+    const filtered = array.filter( (c) => {
+      const code = c.charCodeAt(0)
+      if (code > 96 && code < 123) { // keep letters
+        return true
+      } else if (code > 47 && code < 58) { // keep numbers
+        return true
+      } else if (code === 32 || code === separator.charCodeAt(0)) { // keep space and hyphen
+        return true
+      }
+      return false
+    })
+    // remove extra spaces 
+    const spaceFree = filtered.join('').removeExtraSpaces()
+    // split, join and return 
+    return spaceFree.split(' ').join(separator)
+
 }
 
-const word_four = '    Hello World!!!!  a-hypenated-word  1, 2, 3, 5 and 77   '
-console.log(word_four.kebobCase())
+String.prototype.kebobCase = function() {
+  return kebobCase(this)
+}
+
+console.log(kebobCase('they are outside!! YES 1, 2, !!')) // they-are-outside-yes-1-2
+const word_five = '    Hello World!!!!  a-hypenated-word  1, 2, 3, 5 and 77   '
+console.log(word_five.kebobCase()) // hello-world-a-hypenated-word-1-2-3-5-and-77
 
 // *******************************************************************************************************************
 // #6 - snakeCase()
 // Removes extra space and replaces spaces with an underscore "_", and makes all characters lowercase.
 // *******************************************************************************************************************
 
+function snakeCase(str) {
+  return kebobCase(str,'_')
+}
 String.prototype.snakeCase = function() {
-  return this.kebobCase('_')
+  return snakeCase(this)
 }
 
-const word_five = '    Hello World!!!!  a-hypenated-word  1, 2, 3, 5 and 77   '
-console.log(word_five.snakeCase())
+console.log(snakeCase('hi, How are you?!!')) // hi_how_are_you
+const word_six = '    Hello World!!!!  a-hypenated-word  1, 2, 3, 5 and 77   '
+console.log(word_six.snakeCase()) // hello_world_ahypenatedword_1_2_3_5_and_77
 
 // *******************************************************************************************************************
 // #7 - camelCase() 
@@ -123,38 +130,48 @@ console.log(word_five.snakeCase())
 // other words, and removes all spaces
 // *******************************************************************************************************************
 
-String.prototype.camelCase = function() {
-  // split on the space ' ' to get an array of words
-  const words = this.split(' ')
-  // loop over the words 
-  const camelWords = words.map((word, i) => {
-      // lowercase the first word 
-      if (i === 0) {
-        return word.toLowerCase()
-      }
-      // uppercase the others 
-      return word.capitalize()
-  })
-  // join the words on the ' ' empty string    
-  return camelWords.join('')
+function camelCase(str) {
+   // split on the space ' ' to get an array of words
+   const words = str.split(' ')
+   // loop over the words 
+   const camelWords = words.map((word, i) => {
+       // lowercase the first word 
+       if (i === 0) {
+         return word.toLowerCase()
+       }
+       // uppercase the others 
+       return word.capitalize()
+   })
+   // join the words on the ' ' empty string    
+   return camelWords.join('')
 }
 
-const word_six = 'Hello there how are you'
-console.log(word_six.camelCase())
+String.prototype.camelCase = function() {
+ return camelCase(this)
+}
+
+console.log(camelCase('it is here')) // itIsHere
+const word_seven = 'Hello there how are you'
+console.log(word_seven.camelCase()) // helloThereHowAreYou
 
 // *******************************************************************************************************************
 // #8 - shift() 
 // This method will take the first character of a string and move to the end of a string.
 // *******************************************************************************************************************
 
-String.prototype.shift = function() {
-  const firstLetter = this[0]
-  const newWord = this.slice(1)
+function shift(str) {
+  const firstLetter = str[0]
+  const newWord = str.slice(1)
   return newWord + firstLetter
 }
 
-const word_seven = 'Hello World'
-console.log(word_seven.shift())
+String.prototype.shift = function() {
+  return shift(this)
+}
+
+// console.log(shift('the chair is broken')) // he chair is brokent
+const word_eight = 'hey hi' 
+console.log(word_eight.shift()) // ey hih
 
 // *******************************************************************************************************************
 // #9 - makeHashTag(str)
@@ -162,9 +179,9 @@ console.log(word_seven.shift())
 // Each word in the phrase begins with an uppercase letter.
 // *******************************************************************************************************************
 
-String.prototype.makeHashTag = function() {
+function makeHashTag(str) {
   // split string
-  const words = this.split(' ')
+  const words = str.split(' ')
   // check length 
   if (words.length >= 3) {
     // sort length
@@ -175,26 +192,36 @@ String.prototype.makeHashTag = function() {
   // lowercase each and add # at beginning
   const hashtag = words.map(word => `#${word.toLowerCase()}`)
   return hashtag
+
+}
+String.prototype.makeHashTag = function() {
+  return makeHashTag(this)
 }
 
-const word_eight = 'Amazing bongo drums for sale'
-console.log(word_eight.makeHashTag())
+console.log(makeHashTag('the day is here')) // [ '#the', '#day', '#is', '#here' ]
+const word_nine = 'Amazing bongo drums for sale'
+console.log(word_nine.makeHashTag()) // [ '#amazing', '#bongo', '#drums', '#for', '#sale' ]
 
 // *******************************************************************************************************************
 // #10 - isEmpty(str)
 // Returns true if the given string is empty or contains only whitespace.
 // *******************************************************************************************************************
 
-String.prototype.isEmpty = function() {
-  const split = this.split(' ')
+function isEmpty(str) {
+  const split = str.split(' ')
   const filtered = split.filter(word => word === '')
   return split.length === filtered.length ? true : false
 }
 
-const word_nine = 'Abd def'
-const word_ten = ' '
-console.log(word_nine.isEmpty())
-console.log(word_ten.isEmpty())
+String.prototype.isEmpty = function() {
+  return isEmpty(this)
+}
+
+console.log(isEmpty('ad  a')) // false
+const word_ten = 'Abd def'
+const word_te = ' '
+console.log(word_ten.isEmpty()) // false
+console.log(word_te.isEmpty()) // true
 
 module.exports.capitalize = capitalize
 module.exports.allUpperCase = allUpperCase
