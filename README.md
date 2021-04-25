@@ -1,4 +1,4 @@
-# String - Lib 
+# String - Library 
 
 ### A JS Library for strings.
 
@@ -11,7 +11,7 @@
 
 
 
-### String prototype extension:
+
 
 ```
 1. .capitalize()
